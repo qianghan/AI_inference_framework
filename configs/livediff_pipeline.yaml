@@ -1,0 +1,19 @@
+# configs/livediff_pipeline.yaml
+
+pipeline_name: livediff_pipeline
+steps:
+  - name: video_frame_extraction
+    type: function
+    function: video_frame_extraction
+    params:
+      frame_rate: 30
+  - name: livediff_inference
+    type: model
+    model_name: custom_livediff_model
+    params:
+      prompt: "Transform this frame into a watercolor painting"
+  - name: video_frame_assembly
+    type: function
+    function: video_frame_assembly
+    params:
+      frame_rate: 30

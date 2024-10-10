@@ -1,0 +1,19 @@
+# configs/video_pipeline.yaml
+
+pipeline_name: video_pipeline
+steps:
+  - name: video_frame_extraction
+    type: function
+    function: video_frame_extraction
+    params:
+      frame_rate: 30
+  - name: frame_inference
+    type: model
+    model_name: stabilityai/stable-diffusion-xl-base-1.0
+    params:
+      prompt: "Apply an oil painting effect to this frame"
+  - name: video_frame_assembly
+    type: function
+    function: video_frame_assembly
+    params:
+      frame_rate: 30

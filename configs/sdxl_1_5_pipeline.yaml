@@ -1,0 +1,19 @@
+# configs/sdxl_1_5_pipeline.yaml
+
+pipeline_name: sdxl_1_5_pipeline
+steps:
+  - name: resize
+    type: function
+    function: resize_image
+    params:
+      size: [1024, 1024]
+  - name: sdxl_inference
+    type: model
+    model_name: stabilityai/stable-diffusion-xl-1.5
+    params:
+      prompt: "A high-resolution portrait of a futuristic cityscape at sunset"
+  - name: enhance
+    type: function
+    function: enhance_image
+    params:
+      factor: 1.2

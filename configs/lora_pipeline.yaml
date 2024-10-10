@@ -1,0 +1,19 @@
+# configs/lora_pipeline.yaml
+
+pipeline_name: lora_pipeline
+steps:
+  - name: resize
+    type: function
+    function: resize_image
+    params:
+      size: [512, 512]
+  - name: lora_inference
+    type: model
+    model_name: custom_lora_model
+    params:
+      prompt: "An artistic rendition of a futuristic vehicle in motion"
+  - name: enhance
+    type: function
+    function: enhance_image
+    params:
+      factor: 1.1
